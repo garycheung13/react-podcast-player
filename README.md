@@ -1,4 +1,4 @@
-#Notice
+## Notice
 
 This is an unfinished project building a podcast player using React, Redux, and Howler.
 
