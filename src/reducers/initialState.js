@@ -1,5 +1,5 @@
 export default {
-    playQueue: [],
+    queue: [],
     playlist: [],
     search: {
         "resultCount": -1,
@@ -13,7 +13,7 @@ export default {
             "itunes:image": {href: "http://via.placeholder.com/150x150"}
         }
     },
-    curentPlayingPodcast: null,
+    podcastObject: null,
     ajaxCallsInProgress: 0
 };
 

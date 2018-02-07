@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
 import playlist from './playlistReducer';
 import search from './searchReducer';
+import queue from './queueReducer';
+import player from './playerReducer';
 import channel from './channelReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 
@@ -8,6 +10,8 @@ import ajaxCallsInProgress from './ajaxStatusReducer';
 const rootReducer = combineReducers({
     playlist,
     search,
+    queue,
+    player,
     channel,
     ajaxCallsInProgress
 });

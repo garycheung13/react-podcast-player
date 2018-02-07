@@ -3,8 +3,15 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 class PlayerContainerPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isPlayerActive : false
+        }
+    }
+
     logProps() {
-        console.log(this.props.playlist);
+        console.log(this.props);
     }
 
     render() {
@@ -18,7 +25,9 @@ class PlayerContainerPage extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-      playlist: state.playlist
+      playlist: state.playlist,
+      queue: state.queue,
+      player: state.player
     }
   }
 

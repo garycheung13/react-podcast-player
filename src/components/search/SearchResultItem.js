@@ -15,10 +15,7 @@ const SearchResultItem = props => {
             <h3>{props.result.trackName}</h3>
             <h4>{props.result.artistName}</h4>
             <button>
-                <Link to={'/channel?name=' + encodeURIComponent(props.result.feedUrl)}>View Channel</Link>
-            </button>
-            <button>
-                <Link to={`/channel?name=${encodeURIComponent(props.result.feedUrl)}&id=${props.result.trackId}`}>View Channel w/ template</Link>
+                <Link to={`/channel?name=${encodeURIComponent(props.result.feedUrl)}&id=${props.result.trackId}`}>View Channel</Link>
             </button>
         </div>
     );

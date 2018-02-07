@@ -1,11 +1,10 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function playlistReducer(state = initialState.playlist, action) {
+export default function queueReducer(state = initialState.queue, action) {
     switch (action.type) {
-        case types.LOAD_PLAYLIST_SUCCESS:
-            return action.playlist;
-
+        case types.LOAD_QUEUE_SUCCESS:
+            return action.queue;
         default:
             return state;
     }

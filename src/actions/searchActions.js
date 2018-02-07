@@ -6,7 +6,7 @@ export function podcastSearchSuccess(results) {
 }
 
 function fetchSearchResults(queryString) {
-    return fetch('api/itunes/' + queryString);
+    return fetch('api/itunes/' + encodeURIComponent(queryString));
 }
 
 export function startPodcastSearch(queryString) {

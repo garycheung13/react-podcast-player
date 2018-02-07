@@ -28,7 +28,7 @@ class SearchContainerPage extends Component {
         event.preventDefault();
         //the itunes api expects spaces to be encoded with "+"
         //consider doing this in the backend
-        const encodedQuery = encodeURI(this.state.searchQuery).replace(/%20/g, "+");
+        const encodedQuery = encodeURIComponent(this.state.searchQuery).replace(/%20/g, "+");
         this.props.actions.startPodcastSearch(encodedQuery);
         //switch the route to the search result page
         this.props.history.push('/search?qs=' + encodedQuery);
