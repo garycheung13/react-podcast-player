@@ -13,7 +13,10 @@ export default {
             "itunes:image": {href: "http://via.placeholder.com/150x150"}
         }
     },
-    podcastObject: null,
+    podcastObject: {
+        url: null,
+        playerIsActive: false
+    },
     ajaxCallsInProgress: 0
 };
 

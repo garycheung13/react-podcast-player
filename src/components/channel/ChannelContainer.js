@@ -9,6 +9,7 @@ import ChannelInformation from './ChannelInformation';
 import ChannelEpisodeList from './ChannelEpisodeList';
 
 class ChannelContainer extends Component {
+
     // grab the link and channel id so the child components can use them for error handling
     componentWillMount() {
         const feedUrl = this.props.location.search;
@@ -34,6 +35,7 @@ class ChannelContainer extends Component {
                     <ChannelEpisodeList
                         episodeList={channelInfo.item}
                         playerActions={this.props.actions.playerActions}
+                        player={this.props.player}
                     />
                 </div>
             );
@@ -49,7 +51,8 @@ ChannelContainer.propTypes = {
 function mapStateToProps(state, ownProps) {
     return {
         ajaxCallsInProgress: state.ajaxCallsInProgress,
-        channel: state.channel
+        channel: state.channel,
+        player: state.player
     }
 }
 

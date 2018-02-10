@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchBar = (props) => {
+const SearchBar = ({ handleChange, handleSubmit }) => {
     return (
         <div>
             <form>
@@ -10,9 +10,9 @@ const SearchBar = (props) => {
                     name="podcastName"
                     id="searchBar"
                     placeholder="enter podcast name"
-                    onChange={props.handleChange}
+                    onChange={handleChange}
                 />
-                <button onClick={props.handleSubmit}>Search</button>
+                <button onClick={handleSubmit}>Search</button>
             </form>
         </div>
     );
