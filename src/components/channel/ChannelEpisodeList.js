@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
 
-const ChannelEpisodeList = ({ episodeList, playerActions, player }) => {
+const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }) => {
     function transform(node) {
         if (node.name === "img") {
             return null;
@@ -9,36 +9,31 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player }) => {
     }
 
     function startPodcastFromChannel(event) {
-        event.preventDefault();
-        const url = event.target.getAttribute('data-podcastLink');
-        // if (player.url === url && player.playerIsActive) {
-        //     playerActions.updateCurrentPodcast({
-        //         url: url,
-        //         playerIsActive: false
-        //     })
-        // } else {
-        //     playerActions.updateCurrentPodcast({
-        //         url: url,
-        //         playerIsActive: true
-        //     })
-        // }
-        playerActions.updateCurrentPodcast({
-            url: url,
-            playerIsActive: !(player.url === url && player.playerIsActive)
-        })
-
+        if (event.target.nodeName === "BUTTON") {
+            event.preventDefault();
+            const url = event.target.getAttribute('data-podcastLink');
+            const name = event.target.getAttribute('data-podcastTitle');
+            playerActions.updateCurrentPodcast({
+                url: url,
+                playerIsActive: !(player.url === url && player.playerIsActive),
+                podcastTitle: channelTitle,
+                episodeTitle: name
+            });
+        }
     }
 
     if (episodeList) {
         console.log("render");
         return (
-            <div>
+            <div onClick={startPodcastFromChannel}>
                 <ul>
                     {episodeList.slice(0, 10).map((episode, i) =>
                         <li key={i}>
                             <p>{episode.title}</p>
                             {ReactHtmlParser(episode["description"], { transform: transform })}
-                            <button data-podcastLink={episode.enclosure.url} onClick={startPodcastFromChannel}>Play Episode</button>
+                            <button data-podcastLink={episode.enclosure.url} data-podcastTitle={episode.title}>
+                                Play Episode
+                            </button>
                         </li>
                     )}
                 </ul>

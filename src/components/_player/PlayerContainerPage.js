@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Howl } from 'howler';
 import PlayerControls from './PlayerControls';
+import PlayerTimingManager from './PlayerTimingManager';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as playerActions from '../../actions/playerActions';
@@ -9,12 +10,15 @@ class PlayerContainerPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            playerIsActive: false,
-            currentlyPlayingPodcast: null
+            currentlyPlayingPodcast: {},
+            currentPodcastTime: 0
         }
         // function bindings
         this.createHowlObject = this.createHowlObject.bind(this);
+        this.playPodcast = this.playPodcast.bind(this);
         this.pausePodcast = this.pausePodcast.bind(this);
+        this.countOneSecond = this.countOneSecond.bind(this);
+        this.logProps = this.logProps.bind(this);
     }
 
     logProps() {
@@ -25,52 +29,102 @@ class PlayerContainerPage extends Component {
     createHowlObject(src) {
         return new Howl({
             src: src,
-            html5: true
+            html5: true,
+            buffer: true,
+            // onload: () => {
+            //     this.duration = this.state.currentlyPlayingPodcast.duration();
+            // }
         });
     }
 
-    pausePodcast(){
-        if (this.props.player.playerIsActive){
-            console.log("podcast paused");
-            this.state.currentlyPlayingPodcast.pause();
+    playPodcast() {
+        if (!this.props.player.playerIsActive && this.state.currentlyPlayingPodcast) {
+            console.log("podcast played");
             this.props.actions.playerActions.updateCurrentPodcast({
                 url: this.props.player.url,
-                playerIsActive: false
+                playerIsActive: true,
+                podcastTitle: this.props.player.podcastTitle,
+                episodeTitle: this.props.player.episodeTitle
             });
         }
-     }
+    }
+
+    pausePodcast() {
+        if (this.props.player.playerIsActive) {
+            console.log("podcast paused");
+            this.props.actions.playerActions.updateCurrentPodcast({
+                url: this.props.player.url,
+                playerIsActive: false,
+                podcastTitle: this.props.player.podcastTitle,
+                episodeTitle: this.props.player.episodeTitle
+            });
+        }
+    }
+
+    /* howler counts in seconds */
+    countOneSecond() {
+        this.setState({
+            currentlyPlayingPodcast: this.state.currentlyPlayingPodcast + 1
+        });
+    }
 
     // construct the howl object when url is recieved from store
     componentWillReceiveProps(nextProps) {
         // if the url is different, create a howl object
         if (this.props.player.url !== nextProps.player.url) {
             console.log("howl created");
+            // remove the old podcast if needed
+            if (Object.keys(this.state.currentlyPlayingPodcast).length > 0) {
+                console.log("removing previous podcast");
+                this.state.currentlyPlayingPodcast.unload();
+            }
+            const nextPodcast = this.createHowlObject(nextProps.player.url);
             this.setState({
-                currentlyPlayingPodcast: this.createHowlObject(nextProps.player.url),
+                currentlyPlayingPodcast: nextPodcast,
             });
         }
     }
 
-    // handles play and stop operations
+    // handles play and stop operations,
+    // only this function is allowed to pause and play content
+    // all other components flip flags
     componentWillUpdate(nextProps, nextState) {
         // stop whatever podcast is playing
         if (this.props.player.playerIsActive) {
-            this.state.currentlyPlayingPodcast.stop();
+            console.log("podcast paused");
+            this.state.currentlyPlayingPodcast.pause();
+            // this.duration = nextState.currentlyPlayingPodcast.duration();
         }
         // is active flag is on, trigger a play on the current podcast loaded
         if (nextProps.player.playerIsActive) {
+            console.log("podcast played");
             nextState.currentlyPlayingPodcast.play();
+            // this.duration = nextState.currentlyPlayingPodcast.duration();
         }
     }
 
     render() {
+        const playerStyles = {
+            backgroundColor: "lightgrey",
+            position: "fixed",
+            height: "150px",
+            width: "100%",
+            bottom: 0,
+            left: 0
+        }
+
         return (
-            <div>
+            <div style={playerStyles}>
                 {this.logProps()}
                 <PlayerControls
-                    playerIsActive={this.props.player.playerIsActive}
+                    player={this.props.player}
                     currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
                     pause={this.pausePodcast}
+                    play={this.playPodcast}
+                    duration={this.duration}
+                />
+                <PlayerTimingManager
+                    currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
                 />
             </div>
         );

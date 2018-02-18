@@ -1,18 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlayerControls = ({ playerIsActive, currentlyPlayingPodcast, pause }) => {
+const PlayerControls = ({ player, currentlyPlayingPodcast, pause , play, duration }) => {
+
+    // determine which button gets rendered
+    function renderButton(playerStatus) {
+        if (playerStatus) {
+            return <button onClick={pause}>Pause</button>
+        } else {
+            return <button onClick={play}>Play</button>
+        }
+    }
     return (
         <div>
-            <button onClick={pause}>Pause</button>
+            <h4>{player.episodeTitle}</h4>
+            <p>{player.podcastTitle}</p>
+            {renderButton(player.playerIsActive)}
         </div>
     );
 };
 
 PlayerControls.propTypes = {
-    playerIsActive: PropTypes.bool.isRequired,
+    player: PropTypes.object.isRequired,
     currentlyPlayingPodcast: PropTypes.object,
-    pause: PropTypes.func.isRequired
+    pause: PropTypes.func.isRequired,
+    play: PropTypes.func.isRequired
 };
 
 export default PlayerControls;

@@ -19,13 +19,14 @@ class ChannelContainer extends Component {
 
     render() {
         const channelInfo = this.props.channel.channel;
+        const containerStyles = {paddingBottom: "100px"};
         if (this.props.ajaxCallsInProgress) {
             return (
                 <div>Still Loading..</div>
             );
         } else {
             return (
-                <div>
+                <div style={containerStyles}>
                     <ChannelInformation
                         title={channelInfo.title}
                         summary={channelInfo["description"]}
@@ -36,6 +37,7 @@ class ChannelContainer extends Component {
                         episodeList={channelInfo.item}
                         playerActions={this.props.actions.playerActions}
                         player={this.props.player}
+                        channelTitle ={channelInfo.title}
                     />
                 </div>
             );
