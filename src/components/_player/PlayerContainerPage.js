@@ -17,7 +17,6 @@ class PlayerContainerPage extends Component {
         this.createHowlObject = this.createHowlObject.bind(this);
         this.playPodcast = this.playPodcast.bind(this);
         this.pausePodcast = this.pausePodcast.bind(this);
-        this.countOneSecond = this.countOneSecond.bind(this);
         this.logProps = this.logProps.bind(this);
     }
 
@@ -29,11 +28,7 @@ class PlayerContainerPage extends Component {
     createHowlObject(src) {
         return new Howl({
             src: src,
-            html5: true,
-            buffer: true,
-            // onload: () => {
-            //     this.duration = this.state.currentlyPlayingPodcast.duration();
-            // }
+            html5: true
         });
     }
 
@@ -61,13 +56,6 @@ class PlayerContainerPage extends Component {
         }
     }
 
-    /* howler counts in seconds */
-    countOneSecond() {
-        this.setState({
-            currentlyPlayingPodcast: this.state.currentlyPlayingPodcast + 1
-        });
-    }
-
     // construct the howl object when url is recieved from store
     componentWillReceiveProps(nextProps) {
         // if the url is different, create a howl object
@@ -93,13 +81,11 @@ class PlayerContainerPage extends Component {
         if (this.props.player.playerIsActive) {
             console.log("podcast paused");
             this.state.currentlyPlayingPodcast.pause();
-            // this.duration = nextState.currentlyPlayingPodcast.duration();
         }
         // is active flag is on, trigger a play on the current podcast loaded
         if (nextProps.player.playerIsActive) {
             console.log("podcast played");
             nextState.currentlyPlayingPodcast.play();
-            // this.duration = nextState.currentlyPlayingPodcast.duration();
         }
     }
 
@@ -107,7 +93,7 @@ class PlayerContainerPage extends Component {
         const playerStyles = {
             backgroundColor: "lightgrey",
             position: "fixed",
-            height: "150px",
+            height: "300px",
             width: "100%",
             bottom: 0,
             left: 0
