@@ -23,7 +23,7 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }
     }
 
     if (episodeList) {
-        console.log("render");
+        console.log("rendering podcast episodes");
         return (
             <div onClick={startPodcastFromChannel}>
                 <ul>

@@ -28,12 +28,20 @@ class PlayerContainerPage extends Component {
     createHowlObject(src) {
         return new Howl({
             src: src,
-            html5: true
+            html5: true,
+            onend: () => {
+                this.props.actions.playerActions.updateCurrentPodcast({
+                    url: this.props.player.url,
+                    playerIsActive: false,
+                    podcastTitle: this.props.player.podcastTitle,
+                    episodeTitle: this.props.player.episodeTitle
+                });
+            }
         });
     }
 
     playPodcast() {
-        if (!this.props.player.playerIsActive && this.state.currentlyPlayingPodcast) {
+        if (!this.props.player.playerIsActive && Object.keys(this.state.currentlyPlayingPodcast).length > 0) {
             console.log("podcast played");
             this.props.actions.playerActions.updateCurrentPodcast({
                 url: this.props.player.url,
@@ -83,7 +91,7 @@ class PlayerContainerPage extends Component {
             this.state.currentlyPlayingPodcast.pause();
         }
         // is active flag is on, trigger a play on the current podcast loaded
-        if (nextProps.player.playerIsActive) {
+        if (nextProps.player.playerIsActive && Object.keys(nextState.currentlyPlayingPodcast).length > 0) {
             console.log("podcast played");
             nextState.currentlyPlayingPodcast.play();
         }
