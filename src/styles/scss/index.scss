@@ -1,0 +1,23 @@
+// reset
+@import 'vendor/_reset.scss';
+
+// abstract
+@import 'abstracts/_variables.scss';
+@import 'abstracts/_mixins.scss';
+
+// layout
+@import 'layout/_table.scss';
+@import 'layout/_search-results.scss';
+@import 'layout/_search-area.scss';
+@import 'layout/_main-area.scss';
+@import 'layout/_player-area.scss';
+
+// components
+@import 'components/_search-result-item.scss';
+
+// base
+@import 'base/_base.scss';
+@import 'base/_typography.scss';
+
+//pages
+@import 'pages/_homepage.scss';

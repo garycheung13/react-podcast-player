@@ -1,0 +1,21 @@
+.search-result__item {
+    h3, h4 {
+        text-overflow: ellipsis;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    width: 33%;
+    display: flex;
+    max-height: 200px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.search-result__item-text {
+    padding-left: 10px;
+    width: 60%;
+}

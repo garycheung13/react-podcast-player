@@ -1,0 +1,205 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  cursor: pointer; }
+
+* {
+  box-sizing: border-box; }
+
+table {
+  border-spacing: 0px;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 15px;
+  background-color: transparent;
+  /* Change the background-color of table here */
+  text-align: left;
+  /* Change the text-alignment of table here */ }
+
+th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  /* Change the border-color of heading here */
+  padding: 8px; }
+
+td {
+  border: 1px solid #cccccc;
+  /* Change the border-color of cells here */
+  padding: 8px; }
+
+/* Stylized */
+/* Adding Striped Effect for odd rows */
+tr {
+  background-color: transparent;
+  /* Change the default background-color of rows here */ }
+
+tr:nth-of-type(2n+1) {
+  background-color: #eeeeee;
+  /* Change the background-color of odd rows here */ }
+
+tr th {
+  background-color: #dddddd;
+  /* Change the background-color of heading here */ }
+
+/* Adding Hover Effect for rows */
+tr {
+  -moz-transition: background-color 300ms ease-in-out 0s;
+  -ms-transition: background-color 300ms ease-in-out 0s;
+  -o-transition: background-color 300ms ease-in-out 0s;
+  -webkit-transition: background-color 300ms ease-in-out 0s;
+  transition: background-color 300ms ease-in-out 0s; }
+
+tr:hover {
+  background-color: #fff176;
+  /* Change the hover background-color of rows here */ }
+
+/* Removing left and right border of rows for modern UIs */
+tr {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc; }
+
+th, td {
+  border: none; }
+
+.search-results {
+  padding-top: 50px;
+  padding-bottom: 300px;
+  background-color: #F1F1F1;
+  padding-left: 7.5%;
+  padding-right: 7.5%; }
+  .search-results h1 {
+    font-weight: 700;
+    font-size: 2.25rem; }
+
+.search-results__content {
+  display: flex;
+  flex-wrap: wrap; }
+
+.search-area {
+  background-color: #222222;
+  padding: 10px 15px 10px 15px;
+  display: flex;
+  justify-content: flex-end; }
+
+.search-area__form {
+  font-family: "museo-sans", sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem; }
+  .search-area__form .search-area__input, .search-area__form .search-area__button {
+    font-family: "museo-sans", sans-serif;
+    font-weight: 300;
+    font-size: 1.3rem;
+    padding: 10px 20px 10px 20px; }
+
+.search-area__button {
+  background-color: #5DC3EB;
+  color: white; }
+
+.search-area__input {
+  border: none;
+  font-weight: 300;
+  min-width: 700px;
+  box-sizing: border-box;
+  text-indent: 10px; }
+  .search-area__input:focus::-webkit-input-placeholder {
+    font-style: italic;
+    color: transparent; }
+
+.player-area {
+  background-color: #222222;
+  color: white;
+  min-height: 250px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-family: "museo-sans", sans-serif; }
+
+.search-result__item {
+  width: 33%;
+  display: flex;
+  max-height: 200px;
+  overflow: hidden;
+  margin-bottom: 40px; }
+  .search-result__item h3, .search-result__item h4 {
+    text-overflow: ellipsis; }
+  .search-result__item img {
+    width: 100px;
+    height: 100px; }
+
+.search-result__item-text {
+  padding-left: 10px;
+  width: 60%; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 14px; }
+  @media (min-width: 800px) {
+    html {
+      font-size: 16px; } }
+  @media (min-width: 1200px) {
+    html {
+      font-size: 18px; } }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "museo-sans", sans-serif; }
+
+.homepage {
+  height: 70vh;
+  background-color: #8F8F8F;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center; }
+  .homepage h3 {
+    font-size: 3rem;
+    color: #4E4E4E;
+    font-weight: 500;
+    text-align: center;
+    padding-bottom: 40px; }
+
+.homepage__item {
+  width: 100%; }

@@ -43,6 +43,15 @@ class PlayerTimingManager extends Component {
                     currentSecond: this.props.currentlyPlayingPodcast.seek()
                 })
             });
+
+            nextProps.currentlyPlayingPodcast.on("end", () => {
+                console.log("firing seek event");
+                // reset the current second on end
+                // (has the side effect of hiding when the interval sometimes doesnt clear in time)
+                this.setState({
+                    currentSecond: 0
+                })
+            });
         }
     }
 
@@ -51,9 +60,6 @@ class PlayerTimingManager extends Component {
             // ensure that the progress doesnt exceed duration
             if (this.state.duration === this.state.currentSecond) {
                 clearInterval(this.interval);
-                this.setState({
-                    currentSecond: this.state.duration
-                })
             } else {
                 this.setState({
                     currentSecond: this.state.currentSecond + 1

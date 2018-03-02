@@ -14,9 +14,18 @@ class SearchContainerPage extends Component {
             searchQuery: ''
         }
 
+        this.clearSearchQuery = this.clearSearchQuery.bind(this);
         this.updateSearchValue = this.updateSearchValue.bind(this);
         this.searchAPIForPodcast = this.searchAPIForPodcast.bind(this);
         this.debugState = this.debugState.bind(this);
+    }
+
+    clearSearchQuery(event) {
+        event.preventDefault();
+
+        this.setState({
+            searchQuery: ''
+        })
     }
 
     updateSearchValue(event) {
@@ -41,10 +50,12 @@ class SearchContainerPage extends Component {
 
     render() {
         return (
-            <div>
-                <SearchBar handleChange={this.updateSearchValue} handleSubmit={this.searchAPIForPodcast} />
-                <button onClick={this.debugState}>Debug</button>
-            </div>
+            <header className="search-area">
+                <SearchBar
+                    handleChange={this.updateSearchValue}
+                    handleSubmit={this.searchAPIForPodcast}
+                    />
+            </header>
         );
     }
 }

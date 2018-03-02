@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlayerControls = ({ player, currentlyPlayingPodcast, pause , play, duration }) => {
+const PlayerControls = ({ player, currentlyPlayingPodcast, pause , play }) => {
 
     // determine which button gets rendered
     function renderButton(playerStatus) {

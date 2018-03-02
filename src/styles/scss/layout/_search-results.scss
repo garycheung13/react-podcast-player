@@ -1,0 +1,16 @@
+.search-results {
+    @include background-styles($results-background-grey);
+
+    h1 {
+        font-weight: 700;
+        font-size: 2.25rem;
+    }
+
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+}
+
+.search-results__content {
+    display: flex;
+    flex-wrap: wrap;
+}

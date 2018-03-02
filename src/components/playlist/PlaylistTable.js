@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaylistTableRow from './PlaylistTableRow';
-import './tableStyles.css';
 
 const PlaylistTable = props => {
     return (

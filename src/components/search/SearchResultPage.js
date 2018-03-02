@@ -30,9 +30,12 @@ class SearchResultsPage extends Component {
         }
 
         return (
-            <div>
+            <div className="search-results">
                 <h1>Search Results</h1>
-                {display}
+                <hr/>
+                <div className="search-results__content">
+                    {display}
+                </div>
             </div>
         );
     }

@@ -98,24 +98,14 @@ class PlayerContainerPage extends Component {
     }
 
     render() {
-        const playerStyles = {
-            backgroundColor: "lightgrey",
-            position: "fixed",
-            height: "300px",
-            width: "100%",
-            bottom: 0,
-            left: 0
-        }
-
         return (
-            <div style={playerStyles}>
+            <div className="player-area">
                 {this.logProps()}
                 <PlayerControls
                     player={this.props.player}
                     currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
                     pause={this.pausePodcast}
                     play={this.playPodcast}
-                    duration={this.duration}
                 />
                 <PlayerTimingManager
                     currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
