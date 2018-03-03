@@ -105,10 +105,14 @@ th, td {
   padding-bottom: 300px;
   background-color: #F1F1F1;
   padding-left: 7.5%;
-  padding-right: 7.5%; }
+  padding-right: 7.5%;
+  min-height: 70vh; }
   .search-results h1 {
     font-weight: 700;
     font-size: 2.25rem; }
+  .search-results hr {
+    margin-top: 25px;
+    margin-bottom: 50px; }
 
 .search-results__content {
   display: flex;
@@ -154,21 +158,77 @@ th, td {
   bottom: 0;
   font-family: "museo-sans", sans-serif; }
 
+.channel {
+  padding-top: 50px;
+  padding-bottom: 300px;
+  background-color: #F1F1F1;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.channel__info {
+  width: 20%; }
+  .channel__info img {
+    max-width: 100%;
+    max-height: auto; }
+  .channel__info h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    padding-top: 5%;
+    padding-bottom: 2.5%; }
+  .channel__info h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: grey; }
+
+.channel__episodes {
+  width: 73.5%; }
+  .channel__episodes h2 {
+    font-size: 1.375rem;
+    font-weight: 500; }
+  .channel__episodes p, .channel__episodes li {
+    font-family: "museo-sans", sans-serif; }
+  .channel__episodes p {
+    font-size: 1rem;
+    line-height: 165%; }
+  .channel__episodes div {
+    margin-bottom: 50px; }
+
 .search-result__item {
   width: 33%;
   display: flex;
-  max-height: 200px;
   overflow: hidden;
   margin-bottom: 40px; }
-  .search-result__item h3, .search-result__item h4 {
-    text-overflow: ellipsis; }
   .search-result__item img {
     width: 100px;
     height: 100px; }
 
 .search-result__item-text {
+  position: relative;
+  max-height: 100px;
   padding-left: 10px;
   width: 60%; }
+  .search-result__item-text h3, .search-result__item-text h4 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+  .search-result__item-text h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 5px; }
+  .search-result__item-text h4 {
+    font-size: 0.85rem;
+    color: gray; }
+  .search-result__item-text a {
+    font-family: "museo-sans", sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem; }
+
+.search__channel-link {
+  position: absolute;
+  bottom: 10%; }
 
 body {
   margin: 0;

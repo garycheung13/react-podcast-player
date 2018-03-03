@@ -8,6 +8,12 @@
 
     padding-left: 7.5%;
     padding-right: 7.5%;
+    min-height: 70vh;
+
+    hr {
+        margin-top: 25px;
+        margin-bottom: 50px;
+    }
 }
 
 .search-results__content {

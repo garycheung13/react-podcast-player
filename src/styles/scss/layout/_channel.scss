@@ -1,0 +1,53 @@
+.channel {
+    @include background-styles($results-background-grey);
+
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.channel__info {
+    width: 20%;
+
+    img {
+        max-width: 100%;
+        max-height: auto;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        padding-top: 5%;
+        padding-bottom: 2.5%;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: grey;
+    }
+}
+
+.channel__episodes {
+    h2 {
+        font-size: 1.375rem;
+        font-weight: 500;
+    }
+
+    p, li {
+        font-family: $ui-font-stack;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 165%;
+    }
+
+    div {
+        margin-bottom: 50px;
+    }
+
+    width: 73.5%;
+}

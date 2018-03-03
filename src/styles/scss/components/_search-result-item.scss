@@ -1,8 +1,4 @@
 .search-result__item {
-    h3, h4 {
-        text-overflow: ellipsis;
-    }
-
     img {
         width: 100px;
         height: 100px;
@@ -10,12 +6,41 @@
 
     width: 33%;
     display: flex;
-    max-height: 200px;
     overflow: hidden;
     margin-bottom: 40px;
 }
 
 .search-result__item-text {
+    h3, h4 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    h3 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    h4 {
+        font-size: 0.85rem;
+        color: gray;
+    }
+
+    a {
+        font-family: $ui-font-stack;
+        font-weight: 500;
+        font-size: 0.85rem;
+    }
+
+    position: relative;
+    max-height: 100px;
     padding-left: 10px;
     width: 60%;
+}
+
+.search__channel-link {
+    position: absolute;
+    bottom: 10%;
 }

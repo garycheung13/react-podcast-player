@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import queryString from 'query-string';
 import ChannelInformation from './ChannelInformation';
 import ChannelEpisodeList from './ChannelEpisodeList';
+import ChannelSummary from './ChannelSummary';
 
 class ChannelContainer extends Component {
 
@@ -19,26 +20,31 @@ class ChannelContainer extends Component {
 
     render() {
         const channelInfo = this.props.channel.channel;
-        const containerStyles = {paddingBottom: "100px"};
+        console.log(channelInfo);
         if (this.props.ajaxCallsInProgress) {
             return (
-                <div>Still Loading..</div>
+                <div>Retrieving the podcast feed now...</div>
             );
         } else {
             return (
-                <div style={containerStyles}>
+                <div className="channel">
                     <ChannelInformation
                         title={channelInfo.title}
-                        summary={channelInfo["description"]}
+                        author={channelInfo["itunes:author"]}
                         image={channelInfo["itunes:image"].href}
                         id={this.channelData.id}
                     />
-                    <ChannelEpisodeList
-                        episodeList={channelInfo.item}
-                        playerActions={this.props.actions.playerActions}
-                        player={this.props.player}
-                        channelTitle ={channelInfo.title}
-                    />
+                    <div className="channel__episodes">
+                        <ChannelSummary
+                            summary={channelInfo["description"]}
+                        />
+                        <ChannelEpisodeList
+                            episodeList={channelInfo.item}
+                            playerActions={this.props.actions.playerActions}
+                            player={this.props.player}
+                            channelTitle={channelInfo.title}
+                        />
+                    </div>
                 </div>
             );
         }

@@ -26,8 +26,10 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }
         console.log("rendering podcast episodes");
         return (
             <div onClick={startPodcastFromChannel}>
+            <h2>Episodes</h2>
+            <hr/>
                 <ul>
-                    {episodeList.slice(0, 10).map((episode, i) =>
+                    {episodeList.slice(0, 20).map((episode, i) =>
                         <li key={i}>
                             <p>{episode.title}</p>
                             {ReactHtmlParser(episode["description"], { transform: transform })}

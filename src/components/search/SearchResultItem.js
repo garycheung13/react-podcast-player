@@ -9,9 +9,7 @@ const SearchResultItem = props => {
             <div className="search-result__item-text">
                 <h3>{props.result.trackName}</h3>
                 <h4>{props.result.artistName}</h4>
-                <button>
-                    <Link to={`/channel?name=${encodeURIComponent(props.result.feedUrl)}&id=${props.result.trackId}`}>View Channel</Link>
-                </button>
+                <Link className="search__channel-link" to={`/channel?name=${encodeURIComponent(props.result.feedUrl)}&id=${props.result.trackId}`}>View Channel</Link>
             </div>
         </div>
     );
