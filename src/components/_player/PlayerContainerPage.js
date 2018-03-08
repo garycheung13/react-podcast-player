@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
+import PlayerEpisodeInfo from './PlayerEpisodeInfo';
 import PlayerControls from './PlayerControls';
 import PlayerTimingManager from './PlayerTimingManager';
+import PlayerVolumeControl from './PlayerVolumeControl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as playerActions from '../../actions/playerActions';
@@ -14,6 +16,7 @@ class PlayerContainerPage extends Component {
             currentPodcastTime: 0
         }
         // function bindings
+        this.changeVolume = this.changeVolume.bind(this);
         this.createHowlObject = this.createHowlObject.bind(this);
         this.playPodcast = this.playPodcast.bind(this);
         this.pausePodcast = this.pausePodcast.bind(this);
@@ -50,6 +53,10 @@ class PlayerContainerPage extends Component {
                 episodeTitle: this.props.player.episodeTitle
             });
         }
+    }
+
+    changeVolume(volumeValue) {
+        Howler.volume(volumeValue);
     }
 
     pausePodcast() {
@@ -101,14 +108,22 @@ class PlayerContainerPage extends Component {
         return (
             <div className="player-area">
                 {this.logProps()}
-                <PlayerControls
-                    player={this.props.player}
-                    currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
-                    pause={this.pausePodcast}
-                    play={this.playPodcast}
+                <PlayerEpisodeInfo
+                    episodeTitle={this.props.player.episodeTitle}
+                    podcastTitle={this.props.player.podcastTitle}
                 />
-                <PlayerTimingManager
-                    currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
+                <div className="player__playback-container">
+                    <PlayerControls
+                        playerIsActive={this.props.player.playerIsActive}
+                        pause={this.pausePodcast}
+                        play={this.playPodcast}
+                    />
+                    <PlayerTimingManager
+                        currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
+                    />
+                </div>
+                <PlayerVolumeControl
+                    changeVolume={this.changeVolume}
                 />
             </div>
         );

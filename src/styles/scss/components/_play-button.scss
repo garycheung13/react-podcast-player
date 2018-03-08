@@ -1,0 +1,14 @@
+.play-button {
+    color: $ui-blue;
+    height: 40px;
+    width: 40px;
+    font-size: 1rem;
+    border: 3px solid $ui-blue;
+    border-radius: 50%;
+    text-align: center;
+
+    &:hover {
+        color: white;
+        background-color: $ui-blue;
+    }
+}

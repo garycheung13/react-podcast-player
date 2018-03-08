@@ -1,10 +1,12 @@
 .player-area {
     background-color: $ui-black;
     color: white;
-    min-height: 250px;
+    min-height: 120px;
     width: 100%;
     position: fixed;
     left: 0;
     bottom: 0;
     font-family: $ui-font-stack;
+    display: flex;
+    align-items: center;
 }

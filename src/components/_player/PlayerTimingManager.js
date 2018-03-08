@@ -81,32 +81,24 @@ class PlayerTimingManager extends Component {
         if (Object.keys(this.props.currentlyPlayingPodcast).length > 0) {
             const clickPos = event.clientX;
             const boundingBox = event.currentTarget.getBoundingClientRect();
-            const newPos = (this.state.duration * clickPos) / boundingBox.width;
+            /* subtract left distance to remove distance from left from calculations */
+            const newPos = (this.state.duration * (clickPos - boundingBox.left)) / boundingBox.width;
             this.props.currentlyPlayingPodcast.seek(newPos);
         }
     }
 
     render() {
-        const barStyles = {
-            height: '10px',
-            width: '80%',
-            backgroundColor: '#000000'
-        }
-
         const podcastProgressStyles = {
-            height: 'inherit',
-            backgroundColor: '#4961C1',
-            transformOrigin: 'left',
             transform: this.timeUpdate(this.state.currentSecond, this.state.duration)
         }
 
         return (
-            <div>
-                <p>{formatTimeDisplay(this.state.duration)}</p>
-                <p>{formatTimeDisplay(this.state.currentSecond)}</p>
-                <div className="progressBar" onClick={this.seek} style={barStyles}>
-                    <div className="podcastProgress" style={podcastProgressStyles}></div>
+            <div className="progress-container">
+                <div className="progress__time">{formatTimeDisplay(this.state.currentSecond)}</div>
+                <div className="player-bar" onClick={this.seek}>
+                    <div className="player-bar__progress" style={podcastProgressStyles}></div>
                 </div>
+                <div className="progress__time">{formatTimeDisplay(this.state.duration)}</div>
             </div>
         );
     }

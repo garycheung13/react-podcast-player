@@ -1,0 +1,37 @@
+.player__playback-container {
+    width: 75%;
+}
+
+.player-buttons {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.progress__time {
+    width: 10%;
+    text-align: center;
+    font-weight: 300;
+}
+
+.player-bar {
+    height: 10px;
+    width: 80%;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+}
+
+.player-bar__progress {
+    height: inherit;
+    border-radius: 5px;
+    background-color: $ui-blue;
+    box-shadow: 0 0 5px $ui-blue;
+    transform-origin: left;
+    transition: transform 200ms;
+}

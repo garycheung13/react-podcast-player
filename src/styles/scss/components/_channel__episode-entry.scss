@@ -1,0 +1,25 @@
+.channel__episode-entry {
+    display: flex;
+    align-items: flex-start;
+
+    margin-bottom: 35px;
+}
+
+.entry-info {
+    width: 95%;
+    h4 {
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 0.8rem;
+        color: grey;
+    }
+}
+
+.entry-actions {
+    display: flex;
+    width: 5%;
+    justify-content: flex-start;
+}

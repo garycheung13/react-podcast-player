@@ -151,12 +151,14 @@ th, td {
 .player-area {
   background-color: #222222;
   color: white;
-  min-height: 250px;
+  min-height: 120px;
   width: 100%;
   position: fixed;
   left: 0;
   bottom: 0;
-  font-family: "museo-sans", sans-serif; }
+  font-family: "museo-sans", sans-serif;
+  display: flex;
+  align-items: center; }
 
 .channel {
   padding-top: 50px;
@@ -193,8 +195,11 @@ th, td {
   .channel__episodes p {
     font-size: 1rem;
     line-height: 165%; }
-  .channel__episodes div {
-    margin-bottom: 50px; }
+  .channel__episodes hr {
+    margin-bottom: 25px; }
+
+.channel__summary {
+  margin-bottom: 50px; }
 
 .search-result__item {
   width: 33%;
@@ -230,6 +235,78 @@ th, td {
   position: absolute;
   bottom: 10%; }
 
+.channel__episode-entry {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 35px; }
+
+.entry-info {
+  width: 95%; }
+  .entry-info h4 {
+    font-weight: 500;
+    margin-bottom: 15px; }
+  .entry-info p {
+    font-size: 0.8rem;
+    color: grey; }
+
+.entry-actions {
+  display: flex;
+  width: 5%;
+  justify-content: flex-start; }
+
+.play-button {
+  color: #5DC3EB;
+  height: 40px;
+  width: 40px;
+  font-size: 1rem;
+  border: 3px solid #5DC3EB;
+  border-radius: 50%;
+  text-align: center; }
+  .play-button:hover {
+    color: white;
+    background-color: #5DC3EB; }
+
+.player__playback-container {
+  width: 75%; }
+
+.player-buttons {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px; }
+
+.progress-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.progress__time {
+  width: 10%;
+  text-align: center;
+  font-weight: 300; }
+
+.player-bar {
+  height: 10px;
+  width: 80%;
+  background-color: #D8D8D8;
+  border-radius: 5px; }
+
+.player-bar__progress {
+  height: inherit;
+  border-radius: 5px;
+  background-color: #5DC3EB;
+  box-shadow: 0 0 5px #5DC3EB;
+  transform-origin: left;
+  transition: transform 200ms; }
+
+.player__episode-info {
+  width: 12.5%; }
+
+.player__volume {
+  width: 12.5%;
+  text-align: center; }
+  .player__volume input {
+    background-color: red; }
+
 body {
   margin: 0;
   padding: 0; }
@@ -247,7 +324,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "museo-sans", sans-serif; }
 
 .homepage {
-  height: 70vh;
+  height: 90vh;
   background-color: #8F8F8F;
   display: flex;
   flex-wrap: wrap;

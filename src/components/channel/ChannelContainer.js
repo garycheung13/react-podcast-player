@@ -20,7 +20,6 @@ class ChannelContainer extends Component {
 
     render() {
         const channelInfo = this.props.channel.channel;
-        console.log(channelInfo);
         if (this.props.ajaxCallsInProgress) {
             return (
                 <div>Retrieving the podcast feed now...</div>

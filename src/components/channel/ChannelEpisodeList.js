@@ -2,12 +2,6 @@ import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
 
 const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }) => {
-    function transform(node) {
-        if (node.name === "img") {
-            return null;
-        }
-    }
-
     function startPodcastFromChannel(event) {
         if (event.target.nodeName === "BUTTON") {
             event.preventDefault();
@@ -23,19 +17,33 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }
     }
 
     if (episodeList) {
-        console.log("rendering podcast episodes");
         return (
             <div onClick={startPodcastFromChannel}>
-            <h2>Episodes</h2>
-            <hr/>
+                <h2>Episodes ({episodeList.length}) </h2>
+                <hr />
                 <ul>
                     {episodeList.slice(0, 20).map((episode, i) =>
-                        <li key={i}>
-                            <p>{episode.title}</p>
-                            {ReactHtmlParser(episode["description"], { transform: transform })}
-                            <button data-podcastLink={episode.enclosure.url} data-podcastTitle={episode.title}>
-                                Play Episode
-                            </button>
+                        <li key={i} className="channel__episode-entry">
+                            <div className="entry-actions">
+                                <button
+                                    className="play-button"
+                                    data-podcastLink={episode.enclosure.url}
+                                    data-podcastTitle={episode.title}>
+                                    {(player.url === episode.enclosure.url && player.playerIsActive) ? "❚❚": "▶"}
+                                </button>
+                            </div>
+                            <div className="entry-info">
+                                <h4>{episode.title}</h4>
+                                <p>
+                                    {ReactHtmlParser(episode["description"], {
+                                        transform: function (node) {
+                                            if (node.name === "img") {
+                                                return null;
+                                            }
+                                        }
+                                    })}
+                                </p>
+                            </div>
                         </li>
                     )}
                 </ul>

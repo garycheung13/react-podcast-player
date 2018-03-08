@@ -4,7 +4,7 @@ import unescape from 'unescape';
 
 const ChannelSummary = ({summary}) => {
     return (
-        <div>
+        <div className="channel__summary">
             <h2>About the Show</h2>
             <hr/>
             <p>{unescape(summary)}</p>
