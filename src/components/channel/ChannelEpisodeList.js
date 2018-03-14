@@ -22,11 +22,11 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }
                 <h2>Episodes ({episodeList.length}) </h2>
                 <hr />
                 <ul>
-                    {episodeList.slice(0, 20).map((episode, i) =>
+                    {episodeList.slice(0, 5).map((episode, i) =>
                         <li key={i} className="channel__episode-entry">
                             <div className="entry-actions">
                                 <button
-                                    className="play-button"
+                                    className="media-button"
                                     data-podcastLink={episode.enclosure.url}
                                     data-podcastTitle={episode.title}>
                                     {(player.url === episode.enclosure.url && player.playerIsActive) ? "❚❚": "▶"}

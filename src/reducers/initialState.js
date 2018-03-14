@@ -17,7 +17,7 @@ export default {
         url: null,
         playerIsActive: false,
         podcastTitle: "No podcast playing",
-        episodeTitle: "No podcast name"
+        episodeTitle: "No podcast playing"
     },
     ajaxCallsInProgress: 0
 };

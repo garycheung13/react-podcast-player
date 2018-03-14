@@ -1,3 +1,16 @@
 .player__episode-info {
     width: 12.5%;
+    padding-left: 20px;
+
+    h3 {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 130%;
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-size: 0.80rem;
+        font-weight: 300;
+    }
 }

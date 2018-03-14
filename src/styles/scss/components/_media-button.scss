@@ -1,4 +1,4 @@
-.play-button {
+.media-button {
     color: $ui-blue;
     height: 40px;
     width: 40px;
@@ -6,9 +6,16 @@
     border: 3px solid $ui-blue;
     border-radius: 50%;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &:hover {
         color: white;
         background-color: $ui-blue;
     }
+}
+
+.main-button {
+    height: 60px;
+    width: 60px;
 }

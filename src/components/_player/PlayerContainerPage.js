@@ -20,12 +20,6 @@ class PlayerContainerPage extends Component {
         this.createHowlObject = this.createHowlObject.bind(this);
         this.playPodcast = this.playPodcast.bind(this);
         this.pausePodcast = this.pausePodcast.bind(this);
-        this.logProps = this.logProps.bind(this);
-    }
-
-    logProps() {
-        console.log(this.props);
-        console.log(this.state);
     }
 
     createHowlObject(src) {
@@ -34,10 +28,7 @@ class PlayerContainerPage extends Component {
             html5: true,
             onend: () => {
                 this.props.actions.playerActions.updateCurrentPodcast({
-                    url: this.props.player.url,
-                    playerIsActive: false,
-                    podcastTitle: this.props.player.podcastTitle,
-                    episodeTitle: this.props.player.episodeTitle
+                    playerIsActive: false
                 });
             }
         });
@@ -47,26 +38,20 @@ class PlayerContainerPage extends Component {
         if (!this.props.player.playerIsActive && Object.keys(this.state.currentlyPlayingPodcast).length > 0) {
             console.log("podcast played");
             this.props.actions.playerActions.updateCurrentPodcast({
-                url: this.props.player.url,
-                playerIsActive: true,
-                podcastTitle: this.props.player.podcastTitle,
-                episodeTitle: this.props.player.episodeTitle
+                playerIsActive: true
             });
         }
     }
 
-    changeVolume(volumeValue) {
-        Howler.volume(volumeValue);
+    changeVolume(event) {
+        Howler.volume(event.target.value);
     }
 
     pausePodcast() {
         if (this.props.player.playerIsActive) {
             console.log("podcast paused");
             this.props.actions.playerActions.updateCurrentPodcast({
-                url: this.props.player.url,
-                playerIsActive: false,
-                podcastTitle: this.props.player.podcastTitle,
-                episodeTitle: this.props.player.episodeTitle
+                playerIsActive: false
             });
         }
     }
@@ -94,12 +79,10 @@ class PlayerContainerPage extends Component {
     componentWillUpdate(nextProps, nextState) {
         // stop whatever podcast is playing
         if (this.props.player.playerIsActive) {
-            console.log("podcast paused");
             this.state.currentlyPlayingPodcast.pause();
         }
         // is active flag is on, trigger a play on the current podcast loaded
         if (nextProps.player.playerIsActive && Object.keys(nextState.currentlyPlayingPodcast).length > 0) {
-            console.log("podcast played");
             nextState.currentlyPlayingPodcast.play();
         }
     }
@@ -107,7 +90,6 @@ class PlayerContainerPage extends Component {
     render() {
         return (
             <div className="player-area">
-                {this.logProps()}
                 <PlayerEpisodeInfo
                     episodeTitle={this.props.player.episodeTitle}
                     podcastTitle={this.props.player.podcastTitle}

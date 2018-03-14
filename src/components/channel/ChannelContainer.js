@@ -10,6 +10,20 @@ import ChannelEpisodeList from './ChannelEpisodeList';
 import ChannelSummary from './ChannelSummary';
 
 class ChannelContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 1,
+            itemsPerPage: 15,
+            head: 0
+        }
+    }
+
+    nextPage(e) {
+        this.setState({
+            page: e.target.value
+        })
+    }
 
     // grab the link and channel id so the child components can use them for error handling
     componentWillMount() {
@@ -42,6 +56,8 @@ class ChannelContainer extends Component {
                             playerActions={this.props.actions.playerActions}
                             player={this.props.player}
                             channelTitle={channelInfo.title}
+                            page={this.state.page}
+                            itemsPerPage={this.state.itemsPerPage}
                         />
                     </div>
                 </div>

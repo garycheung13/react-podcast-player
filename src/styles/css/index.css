@@ -254,17 +254,23 @@ th, td {
   width: 5%;
   justify-content: flex-start; }
 
-.play-button {
+.media-button {
   color: #5DC3EB;
   height: 40px;
   width: 40px;
   font-size: 1rem;
   border: 3px solid #5DC3EB;
   border-radius: 50%;
-  text-align: center; }
-  .play-button:hover {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px; }
+  .media-button:hover {
     color: white;
     background-color: #5DC3EB; }
+
+.main-button {
+  height: 60px;
+  width: 60px; }
 
 .player__playback-container {
   width: 75%; }
@@ -276,7 +282,7 @@ th, td {
 
 .progress-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center; }
 
 .progress__time {
@@ -285,10 +291,12 @@ th, td {
   font-weight: 300; }
 
 .player-bar {
-  height: 10px;
-  width: 80%;
+  height: 5px;
+  width: 100%;
   background-color: #D8D8D8;
   border-radius: 5px; }
+  .player-bar:hover {
+    cursor: pointer; }
 
 .player-bar__progress {
   height: inherit;
@@ -299,7 +307,16 @@ th, td {
   transition: transform 200ms; }
 
 .player__episode-info {
-  width: 12.5%; }
+  width: 12.5%;
+  padding-left: 20px; }
+  .player__episode-info h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 130%;
+    margin-bottom: 15px; }
+  .player__episode-info h4 {
+    font-size: 0.80rem;
+    font-weight: 300; }
 
 .player__volume {
   width: 12.5%;

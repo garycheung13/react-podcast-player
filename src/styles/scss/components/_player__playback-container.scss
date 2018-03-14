@@ -10,7 +10,7 @@
 
 .progress-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
@@ -21,10 +21,14 @@
 }
 
 .player-bar {
-    height: 10px;
-    width: 80%;
+    height: 5px;
+    width: 100%;
     background-color: #D8D8D8;
     border-radius: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .player-bar__progress {
