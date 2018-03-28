@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PlayerControls from './PlayerControls';
 import { formatTimeDisplay } from '../../util/timeConversion';
 import PropTypes from 'prop-types';
 
@@ -13,6 +14,7 @@ class PlayerTimingManager extends Component {
         this.progress = this.progress.bind(this);
         this.seek = this.seek.bind(this);
         this.timeUpdate = this.timeUpdate.bind(this);
+        this.intervalSkip = this.intervalSkip.bind(this);
         this.interval = null; // references the setinterval call later
     }
 
@@ -28,24 +30,20 @@ class PlayerTimingManager extends Component {
             });
 
             nextProps.currentlyPlayingPodcast.on("play", () => {
-                console.log("firing play event");
                 this.progress();
             });
 
             nextProps.currentlyPlayingPodcast.on("pause", () => {
-                console.log("firing pause event");
                 clearInterval(this.interval);
             });
 
             nextProps.currentlyPlayingPodcast.on("seek", () => {
-                console.log("firing seek event");
                 this.setState({
                     currentSecond: this.props.currentlyPlayingPodcast.seek()
                 })
             });
 
             nextProps.currentlyPlayingPodcast.on("end", () => {
-                console.log("firing seek event");
                 // reset the current second on end
                 // (has the side effect of hiding when the interval sometimes doesnt clear in time)
                 this.setState({
@@ -87,25 +85,44 @@ class PlayerTimingManager extends Component {
         }
     }
 
+    intervalSkip(event) {
+        if (Object.keys(this.props.currentlyPlayingPodcast).length > 0) {
+            const interval = event.target.getAttribute("data-skipInterval");
+            console.log(interval);
+            // this.props.currentlyPlayingPodcast.seek(this.state.currentSecond + interval);
+        }
+    }
+
     render() {
         const podcastProgressStyles = {
             transform: this.timeUpdate(this.state.currentSecond, this.state.duration)
         }
 
         return (
-            <div className="progress-container">
-                <div className="progress__time">{formatTimeDisplay(this.state.currentSecond)}</div>
-                <div className="player-bar" onClick={this.seek}>
-                    <div className="player-bar__progress" style={podcastProgressStyles}></div>
+            <div className="player__playback-container">
+                <PlayerControls
+                    playerIsActive={this.props.playerIsActive}
+                    pause={this.props.pause}
+                    play={this.props.play}
+                    intervalSkip={this.intervalSkip}
+                />
+                <div className="progress-container">
+                    <div className="progress__time">{formatTimeDisplay(this.state.currentSecond)}</div>
+                    <div className="player-bar" onClick={this.seek}>
+                        <div className="player-bar__progress" style={podcastProgressStyles}></div>
+                    </div>
+                    <div className="progress__time">{formatTimeDisplay(this.state.duration)}</div>
                 </div>
-                <div className="progress__time">{formatTimeDisplay(this.state.duration)}</div>
             </div>
         );
     }
 }
 
 PlayerTimingManager.propTypes = {
-    currentlyPlayingPodcast: PropTypes.object
+    currentlyPlayingPodcast: PropTypes.object,
+    playerIsActive: PropTypes.bool.isRequired,
+    pause: PropTypes.func.isRequired,
+    play: PropTypes.func.isRequired
 };
 
 export default PlayerTimingManager;

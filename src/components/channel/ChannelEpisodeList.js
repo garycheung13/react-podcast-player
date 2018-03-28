@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Pager from './Pager';
 import ReactHtmlParser from 'react-html-parser';
 
-const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }) => {
+const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle, pager, handlePager }) => {
     function startPodcastFromChannel(event) {
         if (event.target.nodeName === "BUTTON") {
             event.preventDefault();
@@ -18,18 +20,19 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }
 
     if (episodeList) {
         return (
-            <div onClick={startPodcastFromChannel}>
+            <div>
                 <h2>Episodes ({episodeList.length}) </h2>
+                <Pager pager={pager} handlePager={handlePager}/>
                 <hr />
-                <ul>
-                    {episodeList.slice(0, 5).map((episode, i) =>
+                <ul onClick={startPodcastFromChannel}>
+                    {episodeList.map((episode, i) =>
                         <li key={i} className="channel__episode-entry">
                             <div className="entry-actions">
                                 <button
                                     className="media-button"
                                     data-podcastLink={episode.enclosure.url}
                                     data-podcastTitle={episode.title}>
-                                    {(player.url === episode.enclosure.url && player.playerIsActive) ? "❚❚": "▶"}
+                                    {(player.url === episode.enclosure.url && player.playerIsActive) ? "❚❚" : "▶"}
                                 </button>
                             </div>
                             <div className="entry-info">
@@ -55,5 +58,13 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle }
         );
     }
 };
+
+ChannelEpisodeList.propTypes = {
+    episodeList: PropTypes.array,
+    playerActions: PropTypes.object.isRequired,
+    player: PropTypes.object.isRequired,
+    channelTitle: PropTypes.string.isRequired,
+    pager: PropTypes.object.isRequired,
+}
 
 export default ChannelEpisodeList;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Howl, Howler } from 'howler';
 import PlayerEpisodeInfo from './PlayerEpisodeInfo';
-import PlayerControls from './PlayerControls';
 import PlayerTimingManager from './PlayerTimingManager';
 import PlayerVolumeControl from './PlayerVolumeControl';
 import { connect } from 'react-redux';
@@ -94,16 +93,12 @@ class PlayerContainerPage extends Component {
                     episodeTitle={this.props.player.episodeTitle}
                     podcastTitle={this.props.player.podcastTitle}
                 />
-                <div className="player__playback-container">
-                    <PlayerControls
-                        playerIsActive={this.props.player.playerIsActive}
-                        pause={this.pausePodcast}
-                        play={this.playPodcast}
-                    />
-                    <PlayerTimingManager
-                        currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
-                    />
-                </div>
+                <PlayerTimingManager
+                    currentlyPlayingPodcast={this.state.currentlyPlayingPodcast}
+                    playerIsActive={this.props.player.playerIsActive}
+                    pause={this.pausePodcast}
+                    play={this.playPodcast}
+                />
                 <PlayerVolumeControl
                     changeVolume={this.changeVolume}
                 />
