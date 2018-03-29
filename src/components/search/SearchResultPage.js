@@ -19,14 +19,16 @@ class SearchResultsPage extends Component {
     }
 
     render() {
-        const searchResult = this.props.search;
+        const search = this.props.search;
         let display = null;
 
         //handle conditions where search is performed with an empty input
-        if (searchResult.hasOwnProperty("emptySearchError")) {
+        if (search.hasOwnProperty("emptySearchError")) {
             display = <p>Please enter the name of podcast you are looking for.</p>;
+        } else if (search.results.length === 0){
+            display = <p>No results Found</p>
         } else {
-            display = searchResult.results.map((result, index) => <SearchResultItem key={index} result={result} />)
+            display = search.results.map((result, index) => <SearchResultItem key={index} result={result} />)
         }
 
         return (

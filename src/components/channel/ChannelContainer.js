@@ -70,6 +70,7 @@ class ChannelContainer extends Component {
 
     render() {
         const channel = this.props.channel;
+        // console.log(channel);
         if (this.props.ajaxCallsInProgress === 0 && this.state.itemsInView.length) {
             return (
                 <div className="channel">

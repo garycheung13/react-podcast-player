@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {faFastForward, faFastBackward} from '@fortawesome/fontawesome-free-solid';
 
 const PlayerControls = ({ playerIsActive, pause , play, intervalSkip }) => {
 
@@ -13,9 +15,13 @@ const PlayerControls = ({ playerIsActive, pause , play, intervalSkip }) => {
     }
     return (
         <div className="player-buttons">
-            <button className="media-button" data-skipInterval="-10" onClick={intervalSkip}>–</button>
+            <button className="media-button" data-skipInterval="-10" onClick={intervalSkip}>
+                <FontAwesomeIcon icon={faFastBackward} className="player-fa-icon"/>
+            </button>
             {renderButton(playerIsActive)}
-            <button className="media-button" data-skipInterval="+10" onClick={intervalSkip}>+</button>
+            <button className="media-button" data-skipInterval="+10" onClick={intervalSkip}>
+                <FontAwesomeIcon icon={faFastForward} className="player-fa-icon"/>
+            </button>
         </div>
     );
 };

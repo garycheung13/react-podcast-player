@@ -327,12 +327,12 @@ th, td {
 .pager {
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: "museo-sans", sans-serif; }
   .pager button {
-    border: 2px solid #5DC3EB;
-    border-radius: 25px;
-    margin-right: 20px;
-    margin-left: 20px; }
+    color: #5DC3EB; }
+  .pager button:disabled {
+    color: grey; }
 
 body {
   margin: 0;

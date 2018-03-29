@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Pager from './Pager';
-import ReactHtmlParser from 'react-html-parser';
+import ChannelListEntry from './ChannelListEntry';
 
 const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle, pager, handlePager }) => {
     function startPodcastFromChannel(event) {
@@ -21,35 +21,16 @@ const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle, 
     if (episodeList) {
         return (
             <div>
-                <h2>Episodes ({episodeList.length}) </h2>
+                <h2>Episodes ({pager.totalItems}) </h2>
                 <Pager pager={pager} handlePager={handlePager}/>
                 <hr />
                 <ul onClick={startPodcastFromChannel}>
                     {episodeList.map((episode, i) =>
-                        <li key={i} className="channel__episode-entry">
-                            <div className="entry-actions">
-                                <button
-                                    className="media-button"
-                                    data-podcastLink={episode.enclosure.url}
-                                    data-podcastTitle={episode.title}>
-                                    {(player.url === episode.enclosure.url && player.playerIsActive) ? "❚❚" : "▶"}
-                                </button>
-                            </div>
-                            <div className="entry-info">
-                                <h4>{episode.title}</h4>
-                                <p>
-                                    {ReactHtmlParser(episode["description"], {
-                                        transform: function (node) {
-                                            if (node.name === "img") {
-                                                return null;
-                                            }
-                                        }
-                                    })}
-                                </p>
-                            </div>
-                        </li>
+                        <ChannelListEntry key={i} episode={episode} player={player} />
                     )}
                 </ul>
+                <hr/>
+                <Pager pager={pager} handlePager={handlePager}/>
             </div>
         );
     } else {
