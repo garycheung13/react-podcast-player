@@ -52,7 +52,6 @@ class ChannelContainer extends Component {
             lastIndex: lastIndex,
             totalItems: totalItems,
         }
-
     }
 
     // grab the link and channel id so the child components can use them for error handling
@@ -64,7 +63,7 @@ class ChannelContainer extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.channel !== prevProps.channel) {
-            this.setPage();
+            this.setPage(); // creating the pager
         }
     }
 

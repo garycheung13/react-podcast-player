@@ -8,7 +8,7 @@ import queryString from 'query-string';
 
 class SearchResultsPage extends Component {
     componentDidMount() {
-        //check the link includes a query param
+        //check that the link includes a query param
         const searchQuery = this.props.location.search;
         const parsedQuery = queryString.parse(searchQuery);
         //if there is a search query included in the URL, fetch it
@@ -23,9 +23,11 @@ class SearchResultsPage extends Component {
         let display = null;
 
         //handle conditions where search is performed with an empty input
-        if (search.hasOwnProperty("emptySearchError")) {
+        if (this.props.ajaxCallsInProgress) {
+            display = <p>Search in progress</p>
+        } else if (search.hasOwnProperty("emptySearchError")) {
             display = <p>Please enter the name of podcast you are looking for.</p>;
-        } else if (search.results.length === 0){
+        } else if (search.results.length === 0 && this.props.ajaxCallsInProgress === 0){
             display = <p>No results Found</p>
         } else {
             display = search.results.map((result, index) => <SearchResultItem key={index} result={result} />)
@@ -49,7 +51,8 @@ SearchResultsPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        search: state.search
+        search: state.search,
+        ajaxCallsInProgress: state.ajaxCallsInProgress
     }
 }
 

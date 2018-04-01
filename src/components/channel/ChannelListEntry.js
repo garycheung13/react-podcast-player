@@ -28,7 +28,16 @@ const ChannelListEntry = ({ episode, player }) => {
             </div>
             <div className="entry-info">
                 <h4>{unescape(episode.title)}</h4>
-                <p>
+                <span onClick={(e) => {
+                    const detailsContainer = e.target.nextSibling;
+                    detailsContainer.classList.toggle("show-details");
+                    if (detailsContainer.classList.contains("show-details")){
+                        e.target.innerHTML = "Hide Details";
+                    } else {
+                        e.target.innerHTML = "Show Details";
+                    }
+                }}>Show Details</span>
+                <p className="entry-info__detail-container">
                     {ReactHtmlParser(episode["description"], {
                         transform: function (node) {
                             if (node.name === "img") {
@@ -37,6 +46,15 @@ const ChannelListEntry = ({ episode, player }) => {
                         }
                     })}
                 </p>
+                {/* <button onClick={(e) => {
+                    const textElement = e.target.previousSibling
+                    textElement.classList.toggle("info-open");
+                    if (textElement.classList.contains("info-open")) {
+                        e.target.innerHTML = "Show Less"
+                    } else {
+                        e.target.innerHTML = "Show More"
+                    }
+                }}>Show More</button> */}
             </div>
         </li>
     );

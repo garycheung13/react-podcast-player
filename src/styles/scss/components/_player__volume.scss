@@ -1,9 +1,7 @@
 .player__volume {
     width: 12.5%;
     text-align: center;
-
-    input {
-        background-color: red;
-    }
+    display: flex;
+    justify-content: space-evenly;
 }
 

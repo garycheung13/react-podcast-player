@@ -12,7 +12,8 @@ class PlayerContainerPage extends Component {
         super(props);
         this.state = {
             currentlyPlayingPodcast: {},
-            currentPodcastTime: 0
+            currentPodcastTime: 0,
+            volumeLevel: 1.0
         }
         // function bindings
         this.changeVolume = this.changeVolume.bind(this);
@@ -35,20 +36,18 @@ class PlayerContainerPage extends Component {
 
     playPodcast() {
         if (!this.props.player.playerIsActive && Object.keys(this.state.currentlyPlayingPodcast).length > 0) {
-            console.log("podcast played");
             this.props.actions.playerActions.updateCurrentPodcast({
                 playerIsActive: true
             });
         }
     }
 
-    changeVolume(event) {
-        Howler.volume(event.target.value);
+    changeVolume(volumeLevel) {
+        Howler.volume(volumeLevel);
     }
 
     pausePodcast() {
         if (this.props.player.playerIsActive) {
-            console.log("podcast paused");
             this.props.actions.playerActions.updateCurrentPodcast({
                 playerIsActive: false
             });
@@ -59,10 +58,8 @@ class PlayerContainerPage extends Component {
     componentWillReceiveProps(nextProps) {
         // if the url is different, create a howl object
         if (this.props.player.url !== nextProps.player.url) {
-            console.log("howl created");
             // remove the old podcast if needed
             if (Object.keys(this.state.currentlyPlayingPodcast).length > 0) {
-                console.log("removing previous podcast");
                 this.state.currentlyPlayingPodcast.unload();
             }
             const nextPodcast = this.createHowlObject(nextProps.player.url);

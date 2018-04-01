@@ -13,6 +13,12 @@
         color: white;
         background-color: $ui-blue;
     }
+
+    &:disabled {
+        color: $results-background-grey;
+        border-color: $results-background-grey;
+        opacity: 0.5;
+    }
 }
 
 .main-button {

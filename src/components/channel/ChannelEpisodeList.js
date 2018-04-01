@@ -5,7 +5,7 @@ import ChannelListEntry from './ChannelListEntry';
 
 const ChannelEpisodeList = ({ episodeList, playerActions, player, channelTitle, pager, handlePager }) => {
     function startPodcastFromChannel(event) {
-        if (event.target.nodeName === "BUTTON") {
+        if (event.target.nodeName === "BUTTON" && event.target.classList.contains("media-button")) {
             event.preventDefault();
             const url = event.target.getAttribute('data-podcastLink');
             const name = event.target.getAttribute('data-podcastTitle');

@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faVolumeOff } from '@fortawesome/fontawesome-free-solid';
 
-const PlayerVolumeControl = ({changeVolume}) => {
+const PlayerVolumeControl = ({ changeVolume }) => {
     return (
-        <div className="player__volume">
+        <div className="player__volume" onInput={(e) => {
+            changeVolume(e.target.value);
+        }}>
+            <FontAwesomeIcon icon={faVolumeOff} />
             <input
                 type="range"
                 name="volume"
@@ -12,14 +17,13 @@ const PlayerVolumeControl = ({changeVolume}) => {
                 max="1.0"
                 step="0.1"
                 defaultValue="1.0"
-                onInput={changeVolume}
             />
         </div>
     );
 };
 
 PlayerVolumeControl.propTypes = {
-    changeVolume: PropTypes.func.isRequired
+    changeVolume: PropTypes.func.isRequired,
 };
 
 export default PlayerVolumeControl;

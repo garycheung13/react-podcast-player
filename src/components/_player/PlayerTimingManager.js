@@ -85,16 +85,15 @@ class PlayerTimingManager extends Component {
         }
     }
 
-    intervalSkip(event) {
+    intervalSkip(seconds, event) {
         if (Object.keys(this.props.currentlyPlayingPodcast).length > 0) {
-            const interval = event.target.getAttribute("data-skipInterval");
-            console.log(interval);
-            // this.props.currentlyPlayingPodcast.seek(this.state.currentSecond + interval);
+            const currentlyPlayingPodcast = this.props.currentlyPlayingPodcast
+            currentlyPlayingPodcast.seek(this.state.currentSecond + seconds);
         }
     }
 
     render() {
-        const podcastProgressStyles = {
+        const timingStyleTransform = {
             transform: this.timeUpdate(this.state.currentSecond, this.state.duration)
         }
 
@@ -102,14 +101,17 @@ class PlayerTimingManager extends Component {
             <div className="player__playback-container">
                 <PlayerControls
                     playerIsActive={this.props.playerIsActive}
+                    currentlyPlayingPodcast={this.props.currentlyPlayingPodcast}
                     pause={this.props.pause}
                     play={this.props.play}
                     intervalSkip={this.intervalSkip}
+                    currentSecond={this.state.currentSecond}
+                    duration={this.state.duration}
                 />
                 <div className="progress-container">
                     <div className="progress__time">{formatTimeDisplay(this.state.currentSecond)}</div>
                     <div className="player-bar" onClick={this.seek}>
-                        <div className="player-bar__progress" style={podcastProgressStyles}></div>
+                        <div className="player-bar__progress" style={timingStyleTransform}></div>
                     </div>
                     <div className="progress__time">{formatTimeDisplay(this.state.duration)}</div>
                 </div>

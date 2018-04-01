@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import unescape from 'unescape';
+// import unescape from 'unescape';
+import ReactHtmlParser from 'react-html-parser';
 
 const ChannelSummary = ({summary}) => {
     return (
         <div className="channel__summary">
             <h2>About the Show</h2>
             <hr/>
-            <p>{unescape(summary)}</p>
+            <p>{ReactHtmlParser(summary)}</p>
         </div>
     );
 };
