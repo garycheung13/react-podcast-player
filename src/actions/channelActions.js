@@ -6,7 +6,12 @@ export function channelLoadSuccess(channel) {
 }
 
 function fetchChannel(rssUrl) {
-    return fetch('api/parser/' + rssUrl);
+    const url = decodeURIComponent(rssUrl);
+    return fetch('api/parser/', {
+        method: "post",
+        headers: {"Content-Type": "application/json" },
+        body: JSON.stringify({feed: url}),
+    });
 }
 
 export function startChannelFetch(rssUrl) {
