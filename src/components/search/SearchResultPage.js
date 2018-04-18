@@ -7,13 +7,15 @@ import * as searchActions from '../../actions/searchActions';
 import queryString from 'query-string';
 
 class SearchResultsPage extends Component {
-    componentDidMount() {
+    componentWillMount() {
         //check that the link includes a query param
         const searchQuery = this.props.location.search;
         const parsedQuery = queryString.parse(searchQuery);
-        //if there is a search query included in the URL, fetch it
-        //but only there hasn't been a search made yet
-        if (searchQuery && this.props.search.resultCount === -1) {
+
+        // handle cases where the search result url is entered directly
+        // rather than from the homepage/channel.
+        // if the page mounts without an ajax call, it means url was entered directly
+        if (searchQuery && this.props.search.resultCount === -1 && this.props.ajaxCallsInProgress === 0) {
             this.props.actions.startPodcastSearch(parsedQuery.qs)
         }
     }
@@ -27,7 +29,7 @@ class SearchResultsPage extends Component {
             display = <p>Search in progress</p>
         } else if (search.hasOwnProperty("emptySearchError")) {
             display = <p>Please enter the name of podcast you are looking for.</p>;
-        } else if (search.results.length === 0 && this.props.ajaxCallsInProgress === 0){
+        } else if (search.results.length === 0 && this.props.ajaxCallsInProgress === 0) {
             display = <p>No results Found</p>
         } else {
             display = search.results.map((result, index) => <SearchResultItem key={index} result={result} />)
@@ -36,7 +38,7 @@ class SearchResultsPage extends Component {
         return (
             <div className="search-results">
                 <h1>Search Results</h1>
-                <hr/>
+                <hr />
                 <div className="search-results__content">
                     {display}
                 </div>
