@@ -1,6 +1,10 @@
-## Notice
+# Straitcast
+This is the frontend client for Straitcast. Powered by React/Redux.
 
-This is an unfinished project building a podcast player using React, Redux, and Howler.
+## Development Requirements
+- Node.js version >= 6
+- npm or yarn
 
-Search implemented using a wrapper API around the itunes search API. The wrapper API is available a seperate repo 
-
+## Setup
+1. Install dependancies by running `yarn install` or `npm install` from the command line.
+2. Start local server by running `npm run start` or `yarn run start`.
