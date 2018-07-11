@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import {faFastForward, faFastBackward} from '@fortawesome/fontawesome-free-solid';
+import {faFastForward, faFastBackward, faPlay, faPause} from '@fortawesome/fontawesome-free-solid';
 
 const PlayerControls = ({ playerIsActive, pause , play, intervalSkip, currentSecond, duration, currentlyPlayingPodcast }) => {
 
     // determine which button gets rendered
     function renderButton(playerStatus) {
         if (playerStatus) {
-            return <button onClick={pause} className="media-button">❚❚</button>
+            return <button onClick={pause} className="media-button">
+                    <FontAwesomeIcon icon={faPause} className="player-fa-icon"/>
+                </button>
         } else {
-            return <button onClick={play} className="media-button">▶</button>
+            return <button onClick={play} className="media-button">
+                <FontAwesomeIcon icon={faPlay} className="player-fa-icon"/>
+            </button>
         }
     }
     const SKIP_INTERVAL_SECONDS = 15;

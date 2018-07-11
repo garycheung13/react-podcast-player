@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import unescape from 'unescape';
 import ReactHtmlParser from 'react-html-parser';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {faPlay, faPause} from '@fortawesome/fontawesome-free-solid';
+
 
 const ChannelListEntry = ({ episode, player }) => {
     function podcastHasEnclosure(episode) {
@@ -11,7 +14,8 @@ const ChannelListEntry = ({ episode, player }) => {
                     className="media-button"
                     data-podcastLink={episode.enclosure.url}
                     data-podcastTitle={episode.title}>
-                    {(player.url === episode.enclosure.url && player.playerIsActive) ? "❚❚" : "▶"}
+                    {(player.url === episode.enclosure.url && player.playerIsActive) ?
+                        <FontAwesomeIcon icon={faPause} className="player-fa-icon"/> : <FontAwesomeIcon icon={faPlay} className="player-fa-icon"/>}
                 </button>
             )
         } else {

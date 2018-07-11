@@ -4,7 +4,7 @@ const Homepage = () => {
     return (
         <div className="homepage">
             <h3 className="homepage__item">To get started, search for a podcast</h3>
-            <svg className="homepage__item" width="412" height="412" viewBox="0 0 412 412" xmlns="http://www.w3.org/2000/svg">
+            <svg className="homepage__item" viewBox="0 0 412 412" perserveAspectRatio="xMinYmid meet" xmlns="http://www.w3.org/2000/svg">
                 <g id="Page-1" fill="none" fillRule="evenodd">
                     <g id="home"transform="translate(-754 -374)">
                         <g id="search-icon" transform="translate(322 244)">

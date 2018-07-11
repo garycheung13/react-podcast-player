@@ -13,6 +13,18 @@
         font-weight: 500;
         text-align: center;
         padding-bottom: 40px;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.5rem;
+            padding-bottom: 20px;
+            padding-top: 50px;
+            align-items: flex-start;
+            align-content: flex-start;
+        }
+    }
+
+    svg {
+        max-width: 200px;
     }
 }
 

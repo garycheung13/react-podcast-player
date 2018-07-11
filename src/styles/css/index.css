@@ -149,14 +149,16 @@ th, td {
   font-weight: 300;
   min-width: 700px;
   box-sizing: border-box;
-  text-indent: 10px; }
+  text-indent: 10px;
+  border-radius: 0; }
   .search-area__input:focus::-webkit-input-placeholder {
     font-style: italic;
     color: transparent; }
   @media screen and (max-width: 768px) {
     .search-area__input {
       min-width: 0;
-      width: 70%; } }
+      width: 70%;
+      text-indent: 2.5px; } }
 
 .player-area {
   background-color: #222222;
@@ -434,6 +436,15 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     text-align: center;
     padding-bottom: 40px; }
+    @media screen and (max-width: 768px) {
+      .homepage h3 {
+        font-size: 1.5rem;
+        padding-bottom: 20px;
+        padding-top: 50px;
+        align-items: flex-start;
+        align-content: flex-start; } }
+  .homepage svg {
+    max-width: 200px; }
 
 .homepage__item {
   width: 100%; }
