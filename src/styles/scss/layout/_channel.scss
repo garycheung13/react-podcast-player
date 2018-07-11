@@ -28,6 +28,10 @@
         font-weight: 500;
         color: grey;
     }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
 }
 
 .channel__episodes {
@@ -50,6 +54,15 @@
     }
 
     width: 73.5%;
+
+    @media screen and (max-width: 768px) {
+        padding-top: 50px;
+        width: 100%;
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .channel__summary {

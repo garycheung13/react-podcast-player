@@ -6,7 +6,8 @@
 }
 
 .entry-info {
-    width: 95%;
+    width: 90%;
+
     h4 {
         font-weight: 500;
         margin-bottom: 15px;
@@ -29,6 +30,10 @@
         color: grey;
         display: none;
     }
+
+    @media screen and (max-width: 768px) {
+        width: 80%;
+    }
 }
 
 .show-details {
@@ -37,6 +42,10 @@
 
 .entry-actions {
     display: flex;
-    width: 5%;
+    width: 10%;
     justify-content: flex-start;
+
+    @media screen and (max-width: 768px) {
+        width: 20%;
+    }
 }

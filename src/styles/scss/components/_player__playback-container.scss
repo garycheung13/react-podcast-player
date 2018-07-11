@@ -1,11 +1,24 @@
 .player__playback-container {
     width: 75%;
+
+    @media screen and (max-width: 768px) {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+    }
+
 }
 
 .player-buttons {
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
+
+    @media screen and (max-width: 768px) {
+        justify-content: flex-start;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
 }
 
 .progress-container {
@@ -28,6 +41,11 @@
 
     &:hover {
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
 

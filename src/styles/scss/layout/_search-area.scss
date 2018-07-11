@@ -3,6 +3,10 @@
     padding: 10px 15px 10px 15px;
     display: flex;
     justify-content: flex-end;
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+    }
 }
 
 .search-area__form {
@@ -21,6 +25,11 @@
 .search-area__button {
     background-color: $ui-blue;
     color: white;
+
+
+    @media screen and (max-width: 768px) {
+        max-width: 30%;
+    }
 }
 
 .search-area__input {
@@ -34,5 +43,10 @@
     &:focus::-webkit-input-placeholder {
         font-style: italic;
         color: transparent;
+    }
+
+    @media screen and (max-width: 768px) {
+        min-width: 0;
+        width: 70%;
     }
 }

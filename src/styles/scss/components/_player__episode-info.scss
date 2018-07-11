@@ -13,4 +13,10 @@
         font-size: 0.80rem;
         font-weight: 300;
     }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 }

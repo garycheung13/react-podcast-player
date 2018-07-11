@@ -123,6 +123,9 @@ th, td {
   padding: 10px 15px 10px 15px;
   display: flex;
   justify-content: flex-end; }
+  @media screen and (max-width: 768px) {
+    .search-area {
+      justify-content: center; } }
 
 .search-area__form {
   font-family: "museo-sans", sans-serif;
@@ -137,6 +140,9 @@ th, td {
 .search-area__button {
   background-color: #5DC3EB;
   color: white; }
+  @media screen and (max-width: 768px) {
+    .search-area__button {
+      max-width: 30%; } }
 
 .search-area__input {
   border: none;
@@ -147,6 +153,10 @@ th, td {
   .search-area__input:focus::-webkit-input-placeholder {
     font-style: italic;
     color: transparent; }
+  @media screen and (max-width: 768px) {
+    .search-area__input {
+      min-width: 0;
+      width: 70%; } }
 
 .player-area {
   background-color: #222222;
@@ -158,7 +168,8 @@ th, td {
   bottom: 0;
   font-family: "museo-sans", sans-serif;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  flex-wrap: wrap; }
 
 .channel {
   padding-top: 50px;
@@ -184,6 +195,9 @@ th, td {
     font-size: 1.5rem;
     font-weight: 500;
     color: grey; }
+  @media screen and (max-width: 768px) {
+    .channel__info {
+      width: 100%; } }
 
 .channel__episodes {
   width: 73.5%; }
@@ -197,6 +211,12 @@ th, td {
     line-height: 165%; }
   .channel__episodes hr {
     margin-bottom: 25px; }
+  @media screen and (max-width: 768px) {
+    .channel__episodes {
+      padding-top: 50px;
+      width: 100%; }
+      .channel__episodes h2 {
+        margin-bottom: 20px; } }
 
 .channel__summary {
   margin-bottom: 50px; }
@@ -204,11 +224,15 @@ th, td {
 .search-result__item {
   width: 33%;
   display: flex;
+  flex-wrap: wrap;
   overflow: hidden;
   margin-bottom: 40px; }
   .search-result__item img {
     width: 100px;
     height: 100px; }
+  @media screen and (max-width: 768px) {
+    .search-result__item {
+      width: 100%; } }
 
 .search-result__item-text {
   position: relative;
@@ -241,7 +265,7 @@ th, td {
   margin-bottom: 35px; }
 
 .entry-info {
-  width: 95%; }
+  width: 90%; }
   .entry-info h4 {
     font-weight: 500;
     margin-bottom: 15px; }
@@ -257,14 +281,20 @@ th, td {
     font-size: 0.8rem;
     color: grey;
     display: none; }
+  @media screen and (max-width: 768px) {
+    .entry-info {
+      width: 80%; } }
 
 .show-details {
   display: block !important; }
 
 .entry-actions {
   display: flex;
-  width: 5%;
+  width: 10%;
   justify-content: flex-start; }
+  @media screen and (max-width: 768px) {
+    .entry-actions {
+      width: 20%; } }
 
 .media-button {
   color: #5DC3EB;
@@ -290,11 +320,21 @@ th, td {
 
 .player__playback-container {
   width: 75%; }
+  @media screen and (max-width: 768px) {
+    .player__playback-container {
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 100%; } }
 
 .player-buttons {
   display: flex;
   justify-content: center;
   padding-bottom: 10px; }
+  @media screen and (max-width: 768px) {
+    .player-buttons {
+      justify-content: flex-start;
+      padding-top: 10px;
+      padding-bottom: 20px; } }
 
 .progress-container {
   display: flex;
@@ -313,6 +353,10 @@ th, td {
   border-radius: 5px; }
   .player-bar:hover {
     cursor: pointer; }
+  @media screen and (max-width: 768px) {
+    .player-bar {
+      margin-left: 20px;
+      margin-right: 20px; } }
 
 .player-bar__progress {
   height: inherit;
@@ -333,12 +377,22 @@ th, td {
   .player__episode-info h4 {
     font-size: 0.80rem;
     font-weight: 300; }
+  @media screen and (max-width: 768px) {
+    .player__episode-info {
+      width: 100%;
+      padding-top: 20px;
+      padding-bottom: 20px; } }
 
 .player__volume {
   width: 12.5%;
   text-align: center;
   display: flex;
   justify-content: space-evenly; }
+  @media screen and (max-width: 768px) {
+    .player__volume {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      width: 100%; } }
 
 .pager {
   display: flex;
